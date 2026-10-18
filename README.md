@@ -21,6 +21,8 @@ Das Projekt basiert auf Konzepten der SI4735-Amateurfunk-Community (u. a. [IU4AL
 Die druckfertige 3D-Modelldatei (STL) für das Gehäuse befindet sich im Ordner [`enclosure/`](enclosure/):
 * **3D-Druckdatei:** [`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl)
 
+> **Hinweis zum Gehäuse:** Das Gehäuse ist ein funktionierender DIY-Prototyp (Handarbeit, nicht KI-generiert) und bietet eine solide Basis für den Alltagsbetrieb. Anpassungen und Weiterentwicklungen sind ausdrücklich erwünscht!
+
 ---
 
 ## Features
@@ -43,17 +45,35 @@ Die druckfertige 3D-Modelldatei (STL) für das Gehäuse befindet sich im Ordner 
   - 20x4 Zeichen LCD mit Signalstärkeanzeige (S-Meter / RSSI).
   - Drehimpulsgeber (Rotary Encoder) mit integriertem Taster für Frequenzabstimmung und Menünavigation.
   - Individueller Startbildschirm (Fuchs-Grafik).
+- **Portabler Akkubetrieb:**
+  - Versorgung über 2x 18650 Li-Ion Akkus (3.7V) mit nachgeschaltetem Step-Up Boost-Wandler auf 5.5V.
 
 ---
 
-## Hardware & Pinbelegung
+## Bedienung & Steuerung
 
-### Verwendete Komponenten
+Die gesamte Steuerung erfolgt intuitiv über den Drehimpulsgeber (Rotary Encoder) und dessen integrierten Taster:
+
+| Aktion | Funktion |
+| :--- | :--- |
+| **Drehen (Normalbetrieb)** | **VFO-Frequenzabstimmung:** Erhöht oder verringert die Empfangsfrequenz entsprechend der gewählten Schrittweite. |
+| **1x Klick (kurz)** | **Bandwechsel (Band):** Drehen schaltet zwischen den Bändern (UKW, MW1-3, 80m, SW1-9, 40m, 20m, 15m, CB, 10m, ALL) um. |
+| **Doppelklick** | **Menü öffnen (Menu):** Drehen blättert durch die Parameter (*Volume, Step, Mode, BFO, AGC, Bandwidth, SoftMute*). Klick wählt den Parameter aus. |
+| **BFO aktiv (SSB/CW)** | **BFO-Feinabstimmung:** Drehen verstellt den BFO in feinen 25-Hz-Schritten zur Schwebungs- und Tonhöhenabstimmung. |
+| **Gedrückt halten beim Einschalten** | **EEPROM-Reset:** Setzt alle gespeicherten Frequenzen und Einstellungen auf Standardwerte zurück (`EEPROM RESETED`). |
+
+---
+
+## Hardware & Stromversorgung
+
+### Komponenten & Aufbau
 1. **Mikrocontroller:** Arduino Micro (ATmega32U4, 5V / 16 MHz)
 2. **Empfänger-Modul:** Silicon Labs SI4735 (oder SI4732 mit I2C-Ansteuerung)
-3. **Display:** HD44780-kompatibles LCD-Modul 20x4 (4-Bit-Modus)
+3. **Display:** HD44780-kompatibles LCD-Modul 20x4 (4-Bit-Parallelbetrieb)
 4. **Bedienung:** Rotary Encoder mit Push-Button
-5. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
+5. **Stromversorgung:** 2x 18650 Li-Ion Akkuzellen (3.7V) mit Step-Up / Boost-Konverter auf 5.5V für langen netzunabhängigen Mobilbetrieb.
+6. **NF-Verstärker:** Leistungsstarkes Audio-Verstärkermodul (stärker als Standard-PAM8403) zur direkten Ansteuerung des Lautsprechers.
+7. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
 
 ### Pinout (Arduino Micro)
 
