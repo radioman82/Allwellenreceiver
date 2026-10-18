@@ -72,7 +72,7 @@ Die gesamte Steuerung erfolgt intuitiv über den Drehimpulsgeber (Rotary Encoder
 3. **Display:** HD44780-kompatibles LCD-Modul 20x4 (4-Bit-Parallelbetrieb)
 4. **Bedienung:** Rotary Encoder mit Push-Button
 5. **Stromversorgung:** 2x 18650 Li-Ion Akkuzellen (3.7V) mit Step-Up / Boost-Konverter auf 5.5V für langen netzunabhängigen Mobilbetrieb.
-6. **NF-Verstärker:** Leistungsstarkes Audio-Verstärkermodul (stärker als Standard-PAM8403) zur direkten Ansteuerung des Lautsprechers.
+6. **NF-Verstärker:** TDA2030 Audio-Verstärkermodul (deutlich kräftiger und klangstärker als Standard-PAM8403) zur satten Ansteuerung des Lautsprechers.
 7. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
 
 ### Pinout (Arduino Micro)
