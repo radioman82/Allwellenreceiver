@@ -1,8 +1,25 @@
 # Allwellenreceiver (SI4735 + Arduino Micro + LCD 20x4)
 
-Ein kompakter, leistungsfähiger DIY-Allwellenempfänger für **UKW (FM), Mittelwelle (MW), Kurzwelle (SW) und Langwelle (LW)** inklusive **SSB (USB/LSB)** und **CW**, aufgebaut mit einem **Arduino Micro (ATmega32U4)**, dem **Silicon Labs SI4735 / SI4732** Radio-IC und einem klassischen **20x4 LCD-Display**.
+Ein kompakter, leistungsfähiger DIY-Allwellenempfänger für **UKW (FM), Mittelwelle (MW), Kurzwelle (SW) und Langwelle (LW)** inklusive **SSB (USB/LSB)** und **CW**, aufgebaut mit einem **Arduino Micro (ATmega32U4)**, dem **Silicon Labs SI4735 / SI4732** Radio-IC und einem klassischen **20x4 LCD-Display**, untergebracht in einem maßgeschneiderten **3D-Druckgehäuse**.
 
 Das Projekt basiert auf Konzepten der SI4735-Amateurfunk-Community (u. a. [IU4ALH](https://github.com/IU4ALH/IU4ALH) und der SI4735-Bibliothek von [PU2CLR](https://github.com/pu2clr/SI4735)), wurde jedoch speziell für den kompakten **Arduino Micro**, ein 4-Bit paralleles **20x4 LCD** und optimierte Firmware mit EEPROM-Speicherung, schnellem Menü und BFO-Feinabstimmung angepasst.
+
+---
+
+## Impressionen & Gehäuse (3D-Druck)
+
+<p align="center">
+  <img src="enclosure/vorderansicht.jpg" alt="Frontansicht Allwellenempfänger" width="48%">
+  <img src="enclosure/Betrieb.jpg" alt="Allwellenempfänger im Betrieb" width="48%">
+</p>
+
+<p align="center">
+  <img src="enclosure/Innenleben.jpg" alt="Innenleben und Verkabelung" width="48%">
+  <img src="enclosure/antennenanschluss.jpg" alt="Rückseite mit Antennenanschluss" width="48%">
+</p>
+
+Die druckfertige 3D-Modelldatei (STL) für das Gehäuse befindet sich im Ordner [`enclosure/`](enclosure/):
+* **3D-Druckdatei:** [`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl)
 
 ---
 
@@ -36,7 +53,7 @@ Das Projekt basiert auf Konzepten der SI4735-Amateurfunk-Community (u. a. [IU4AL
 2. **Empfänger-Modul:** Silicon Labs SI4735 (oder SI4732 mit I2C-Ansteuerung)
 3. **Display:** HD44780-kompatibles LCD-Modul 20x4 (4-Bit-Modus)
 4. **Bedienung:** Rotary Encoder mit Push-Button
-5. **Gehäuse:** 3D-Druckgehäuse *(Dateien folgen)*
+5. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
 
 ### Pinout (Arduino Micro)
 
@@ -82,4 +99,4 @@ Das Projekt basiert auf Konzepten der SI4735-Amateurfunk-Community (u. a. [IU4AL
 ## Lizenz
 
 Dieses Projekt steht unter der [MIT License](LICENSE).
-3D-Druck- und Hardware-Dateien (sobald ergänzt) stehen unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+3D-Druck- und Gehäusedateien stehen unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
