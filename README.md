@@ -45,17 +45,20 @@ Die druckfertige 3D-Modelldatei (STL) für das Gehäuse befindet sich im Ordner 
   - 20x4 Zeichen LCD mit Signalstärkeanzeige (S-Meter / RSSI).
   - Drehimpulsgeber (Rotary Encoder) mit integriertem Taster für Frequenzabstimmung und Menünavigation.
   - Individueller Startbildschirm (Fuchs-Grafik).
-- **Portabler Akkubetrieb:**
-  - Versorgung über 2x 18650 Li-Ion Akkus (3.7V) mit nachgeschaltetem Step-Up Boost-Wandler auf 5.5V.
+- **Portabler Akkubetrieb & Schalter:**
+  - Versorgung über **2x 18650 Li-Ion Akkus in Reihe (7.4V – 8.4V)**.
+  - Hauptschalter integriert im **Lautstärkepotentiometer** (klassisches Einschalten beim Aufdrehen der Lautstärke).
+  - Zweistufige Spannungsarchitektur: **Step-Down Wandler auf 3.3V** (für Arduino & SI4735) und ein **LM7805 Spannungsregler-IC auf 5V** (für LCD und Logik).
 
 ---
 
 ## Bedienung & Steuerung
 
-Die gesamte Steuerung erfolgt intuitiv über den Drehimpulsgeber (Rotary Encoder) und dessen integrierten Taster:
+Die gesamte Abstimmung und Menüsteuerung erfolgt über den Drehimpulsgeber (Rotary Encoder) und dessen integrierten Taster. Das Ein- und Ausschalten erfolgt klassisch über das Lautstärkepotentiometer:
 
 | Aktion | Funktion |
 | :--- | :--- |
+| **Lautstärkepoti drehen / klicken** | **Ein-/Ausschalter & analoge Lautstärke:** Schaltet das Radio beim Aufdrehen ein und regelt stufenlos den TDA2030-Verstärker. |
 | **Drehen (Normalbetrieb)** | **VFO-Frequenzabstimmung:** Erhöht oder verringert die Empfangsfrequenz entsprechend der gewählten Schrittweite. |
 | **1x Klick (kurz)** | **Bandwechsel (Band):** Drehen schaltet zwischen den Bändern (UKW, MW1-3, 80m, SW1-9, 40m, 20m, 15m, CB, 10m, ALL) um. |
 | **Doppelklick** | **Menü öffnen (Menu):** Drehen blättert durch die Parameter (*Volume, Step, Mode, BFO, AGC, Bandwidth, SoftMute*). Klick wählt den Parameter aus. |
@@ -66,14 +69,18 @@ Die gesamte Steuerung erfolgt intuitiv über den Drehimpulsgeber (Rotary Encoder
 
 ## Hardware & Stromversorgung
 
-### Komponenten & Aufbau
-1. **Mikrocontroller:** Arduino Micro (ATmega32U4, 5V / 16 MHz)
+### Komponenten & Stromversorgungs-Architektur
+1. **Mikrocontroller:** Arduino Micro (ATmega32U4)
 2. **Empfänger-Modul:** Silicon Labs SI4735 (oder SI4732 mit I2C-Ansteuerung)
 3. **Display:** HD44780-kompatibles LCD-Modul 20x4 (4-Bit-Parallelbetrieb)
 4. **Bedienung:** Rotary Encoder mit Push-Button
-5. **Stromversorgung:** 2x 18650 Li-Ion Akkuzellen (3.7V) mit Step-Up / Boost-Konverter auf 5.5V für langen netzunabhängigen Mobilbetrieb.
-6. **NF-Verstärker:** TDA2030 Audio-Verstärkermodul (deutlich kräftiger und klangstärker als Standard-PAM8403) zur satten Ansteuerung des Lautsprechers.
-7. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
+5. **Ein-/Ausschalter & Audiopegel:** Lautstärkepotentiometer mit integriertem Netzschalter (beim Rechtsdrehen klickt der Schalter ein und schaltet die Akkuspannung zu).
+6. **NF-Verstärker:** TDA2030 Audio-Verstärkermodul, versorgt direkt aus der 2S-Akkuspannung für dynamische und verzerrungsfreie Lautsprecherwiedergabe.
+7. **Spannungsversorgung (2S Li-Ion):**
+   - **Akkus:** 2x 18650 Li-Ion Zellen in Reihe (7.4V Nennspannung, bis 8.4V Ladeschlussspannung).
+   - **Step-Down (Buck) Wandler:** Regelt effizient auf 3.3V für den Arduino und das SI4735-Modul.
+   - **Spannungsregler LM7805:** Liefert brummfreie, saubere 5V für die Hintergrundbeleuchtung und Logik des 20x4 LCDs.
+8. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
 
 ### Pinout (Arduino Micro)
 
