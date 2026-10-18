@@ -71,14 +71,14 @@ Die gesamte Abstimmung und Menüsteuerung erfolgt über den Drehimpulsgeber (Rot
 
 ### Komponenten & Stromversorgungs-Architektur
 1. **Mikrocontroller:** Arduino Micro (ATmega32U4)
-2. **Empfänger-Modul:** Silicon Labs SI4735 (oder SI4732 mit I2C-Ansteuerung)
-3. **Display:** HD44780-kompatibles LCD-Modul 20x4 (4-Bit-Parallelbetrieb)
+2. **Empfänger-Modul:** Silicon Labs **SI4732** (auf **Pfostenstecker / Buchsenleiste** gesteckt – dadurch modular und bei Bedarf tauschbar)
+3. **Display:** HD44780-kompatibles LCD-Modul 20x4 im 4-Bit-Parallelbetrieb (ebenfalls über **Pfostenstecker** steckbar montiert für einfachen Einbau und Service)
 4. **Bedienung:** Rotary Encoder mit Push-Button
 5. **Ein-/Ausschalter & Audiopegel:** Lautstärkepotentiometer mit integriertem Netzschalter (beim Rechtsdrehen klickt der Schalter ein und schaltet die Akkuspannung zu).
 6. **NF-Verstärker:** TDA2030 Audio-Verstärkermodul, versorgt direkt aus der 2S-Akkuspannung für dynamische und verzerrungsfreie Lautsprecherwiedergabe.
 7. **Spannungsversorgung (2S Li-Ion):**
    - **Akkus:** 2x 18650 Li-Ion Zellen in Reihe (7.4V Nennspannung, bis 8.4V Ladeschlussspannung).
-   - **Step-Down (Buck) Wandler:** Regelt effizient auf 3.3V für den Arduino und das SI4735-Modul.
+   - **Step-Down (Buck) Wandler:** Regelt effizient auf 3.3V für den Arduino und das SI4732-Modul.
    - **Spannungsregler LM7805:** Liefert brummfreie, saubere 5V für die Hintergrundbeleuchtung und Logik des 20x4 LCDs.
 8. **Gehäuse:** 3D-Druckgehäuse ([`enclosure/radio_enclosure.stl`](enclosure/radio_enclosure.stl))
 
